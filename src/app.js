@@ -3,6 +3,8 @@ const path = require('path')
 // npm modules
 const express = require('express');
 const hbs = require('hbs');
+// local modules
+const geocode = require('./service/geo-service');
 
 // Create the app
 const app = express();
@@ -39,15 +41,21 @@ app.get('/weather', (req, res) => {
         res.send({
 	    error: 'Required query param: [location] missing.'
 	});
-	return;
+        return;
     }
 
-    res.send({
-	data: {
-    	    location: req.query.location,
-	    weather: 'It\'s raining outside!'
+    geocode(req.query.location, (error, response) => {
+	if (error) {
+	    res.send({error});
+	} else {
+	    res.send({
+	        data: {
+	            location: req.query.location,
+		    weather: response.latitude + '/' + response.longitude
+	        }
+	    });
 	}
-    })
+    });
 });
 
 // Start the server

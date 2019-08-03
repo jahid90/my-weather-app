@@ -25,5 +25,6 @@ services:
             - VIRTUAL_HOST=weather-service.jahiduls.io
             - NODE_ENV=production
         ports:
-            - 3000:3000
+            - 80:3000
+        env_file: config.env
 
