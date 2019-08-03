@@ -24,6 +24,11 @@ app.get('', (req, res) => {
     res.render('index');
 });
 
+// Setup the /about route
+app.get('/about', (req, res) => {
+    res.render('about');
+});
+
 // Start the server
 app.listen(port, () => {
     console.log(`Server listening on port ${port}.`)
