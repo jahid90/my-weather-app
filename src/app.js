@@ -33,6 +33,23 @@ app.get('/about', (req, res) => {
     });
 });
 
+// Setup /weather route
+app.get('/weather', (req, res) => {
+    if (!req.query.location) {
+        res.send({
+	    error: 'Required query param: [location] missing.'
+	});
+	return;
+    }
+
+    res.send({
+	data: {
+    	    location: req.query.location,
+	    weather: 'It\'s raining outside!'
+	}
+    })
+});
+
 // Start the server
 app.listen(port, () => {
     console.log(`Server listening on port ${port}.`)

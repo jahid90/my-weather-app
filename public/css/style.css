@@ -48,3 +48,11 @@ input, button {
     padding: 8px;
     font-size: 16px;
 }
+
+#error-data {
+    color: red;
+}
+
+#error-data, #weather-data {
+    font-size: 16px;
+}
