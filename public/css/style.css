@@ -1,3 +1,43 @@
 body {
     font-family: arial;
+    max-width: 800px;
+    margin: 0px auto;
+    padding: 16px;
+    height: 100vh;
+
+    color: #333;
+
+    display: flex;
+    flex-direction: column;
 }
+
+footer {
+    border-top: 1px solid #777;
+    margin-top: 16px;
+    padding: 16px;
+    
+    color: #888;
+    text-align: center;
+}
+
+header {
+    margin-top: 16px;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+header nav a {
+    color: #555;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.content {
+    padding: 16px;
+
+    flex-grow: 1;
+}
+
+

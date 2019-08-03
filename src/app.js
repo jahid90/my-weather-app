@@ -21,12 +21,16 @@ hbs.registerPartials(partialsPath);
 
 // Setup the root route
 app.get('', (req, res) => {
-    res.render('index');
+    res.render('index', {
+        title: 'Weather'
+    });
 });
 
 // Setup the /about route
 app.get('/about', (req, res) => {
-    res.render('about');
+    res.render('about', {
+        title: 'About'
+    });
 });
 
 // Start the server
