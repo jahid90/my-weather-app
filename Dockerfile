@@ -1,11 +1,11 @@
-FROM node
+FROM node:alpine
 
 WORKDIR /usr/src/app
 
-COPY package.json ./
+COPY package.json yarn.lock ./
 
 RUN yarn install
 
-COPY app.js ./
+COPY . ./
 
-CMD ["node", "app.js"]
+CMD ["npm", "run", "start"]
