@@ -54,5 +54,6 @@ input, button {
 }
 
 #error-data, #weather-data {
+    margin-top: 16px;
     font-size: 16px;
 }

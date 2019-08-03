@@ -5,6 +5,7 @@ const express = require('express');
 const hbs = require('hbs');
 // local modules
 const geocode = require('./service/geo-service');
+const weather = require('./service/weather-service');
 
 // Create the app
 const app = express();
@@ -44,15 +45,21 @@ app.get('/weather', (req, res) => {
         return;
     }
 
-    geocode(req.query.location, (error, response) => {
+    geocode(req.query.location, (error, { latitude, longitude }) => {
 	if (error) {
 	    res.send({error});
 	} else {
-	    res.send({
-	        data: {
-	            location: req.query.location,
-		    weather: response.latitude + '/' + response.longitude
-	        }
+	    weather(latitude, longitude, (error, data) => {
+	        if (error) {
+		    res.send({error});
+		} else {
+		    res.send({
+	                data: {
+	                    location: req.query.location,
+		            weather: data
+	                }
+	            });
+		}
 	    });
 	}
     });
