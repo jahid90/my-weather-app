@@ -3,33 +3,47 @@
 <html>
 
 <head>
-  <title>Jahid's Weather App</title>
+  <title>Weather App Service</title>
 
   <link rel='stylesheet' href='/css/style.css' />
 </head>
 
 <body>
     {{>header}}
-    
-    <div class='content'>
 
-	<h1>{{title}}</h1>
+    <div class='container'>
 
-	<p>View the weather forecast for a location by entering it in the text field below and clicking Submit.</p>
+        <div class='content'>
 
-	<form id='weather-form'>
-  	    <input placeholder='Location' id='location'/>
-	    <button type='submit'>Submit</button>
-	</form>
+            <h1>{{title}}</h1>
 
-	<div>
-	    <div id='error-data'></div>
-	    <div id='weather-data'></div>
-	</div>
-    
+            <p>Provides APIs to pull the weather information for a location.</p>
+
+            <p>Uses MapQuestAPI for fetching the co-ordinates of the location and then uses the co-ordinates to call DarkSkyAPI to fetch the weather information.</p>
+
+            <p>The data is trimmed down into a small subset for use in the frontend.</p>
+
+            <h3>Available routes</h3>
+            <table>
+                <tr>
+                    <th class='left'>Route</th>
+                    <th>Method</th>
+                    <th>Query Params</th>
+                </tr>
+                {{#each routes}}
+                <tr>
+                    <td class='left'><a href='{{this.route}}'>{{ this.route }}</a></td>
+                    <td>{{ this.method }}</td>
+                    <td>{{ this.params }}</td>
+                </tr>
+                {{/each}}
+            </table>
+
+        </div>
+
+        {{>footer}}
+
     </div>
-    
-    {{>footer}}
 
     <script type='text/javascript' src='/js/app.js'></script>
 </body>

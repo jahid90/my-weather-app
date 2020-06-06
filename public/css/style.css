@@ -1,59 +1,74 @@
 body {
     font-family: arial;
-    padding: 16px;
+    margin: 0;
+    padding: 0;
     height: 100vh;
 
-    color: #333;
-
-    display: flex;
-    flex-direction: column;
+    background-color: #333;
 }
 
-footer {
-    border-top: 1px solid #777;
-    margin: 16px auto;
-    padding: 16px;
-    width: 800px;
-    
-    color: #888;
+.container {
+    background: #fff;
+
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2em;
+
+    box-shadow:
+        /* The top layer shadow */
+        0 1px 1px rgba(0,0,0,0.15),
+        /* The second layer */
+        0 10px 0 -5px #eee,
+        /* The second layer shadow */
+        0 10px 1px -4px rgba(0,0,0,0.15),
+        /* The third layer */
+        0 20px 0 -10px #eee,
+        /* The third layer shadow */
+        0 20px 1px -9px rgba(0,0,0,0.15);
+}
+
+.container table {
+    width: 100%;
+}
+
+.container table .left {
+    text-align: left;
+}
+
+.container table th, td {
+    padding: 15px;
     text-align: center;
+    border-bottom: 1px solid #ddd;
 }
 
-header nav {
-    flex-direction: row-reverse;
-    padding: 16px;
-    background-color: #ddd;
+/* Navbar */
+nav {
+    margin: 0;
+    padding: 0;
+    background-color: #222;
 }
 
-h1 {
-    font-size: 32px;
+nav ul {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0;
+
+    list-style-type: none;
+    overflow: hidden;
 }
 
-header nav a {
-    font-size: 16px;
+nav ul li {
+    float: left;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
     text-decoration: none;
-    padding: 8px;
-    color: #333;
 }
 
-.content {
-    width: 800px;
-    padding: 16px;
-    margin: 0px auto;
-
-    flex-grow: 1;
-}
-
-input, button {
-    padding: 8px;
-    font-size: 16px;
-}
-
-#error-data {
-    color: red;
-}
-
-#error-data, #weather-data {
-    margin-top: 16px;
-    font-size: 16px;
+nav ul li a:hover {
+    background-color: #111;
 }

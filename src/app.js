@@ -4,8 +4,8 @@ const path = require('path')
 const express = require('express');
 const hbs = require('hbs');
 // local modules
-const geocode = require('./service/geo-service');
-const weather = require('./service/weather-service');
+const geocode = require('./service/geo');
+const weather = require('./service/weather');
 
 // Create the app
 const app = express();
@@ -22,10 +22,30 @@ app.set('view engine', 'hbs');
 app.set('views', viewsPath);
 hbs.registerPartials(partialsPath);
 
+// App routes
+const routes = [
+	{
+		route: '/',
+		method: 'GET',
+		params: '',
+	},
+	{
+		route: '/about',
+		method: 'GET',
+		params: ''
+	},
+	{
+		route: '/weather',
+		method: 'GET',
+		params: 'location=<location>'
+	}
+];
+
 // Setup the root route
 app.get('', (req, res) => {
     res.render('index', {
-        title: 'Weather'
+		title: 'Weather',
+		routes: routes
     });
 });
 
