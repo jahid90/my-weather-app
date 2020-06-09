@@ -1,18 +1,33 @@
-const request = require('request');
+const axios = require('axios');
 
-const geocode = (location, callback) => {
-    const url = 'http://open.mapquestapi.com/geocoding/v1/address?key=' + process.env.MAP_QUEST_API_KEY + '&location=' + location + '&maxResults=1';
-    
-    request({ url: url, json: true }, (error, response, body) => {
-        if (error) {
-	    callback(error);
-	} else {
-	    callback(undefined, {
-	        latitude: body.results[0].locations[0].latLng.lat,
-		longitude: body.results[0].locations[0].latLng.lng
-	    });
-	}
-    });
+const baseUrl = process.env.MAP_QUEST_BASE_URL;
+const key = process.env.MAP_QUEST_API_KEY;
+
+async function getGeoCoordinates(location) {
+
+    console.debug('Making geo request to: ', baseUrl);
+
+    try {
+        const apiResponse = await axios.get(baseUrl, {
+            params: {
+                key,
+                location
+            }
+        });
+
+        console.debug('Received response from API');
+        console.debug(apiResponse);
+
+        return {
+            data: apiResponse.data.results[0]
+        };
+    } catch (error) {
+        return {
+            error
+        };
+    }
+}
+
+module.exports = {
+    get: getGeoCoordinates
 };
-
-module.exports = geocode;

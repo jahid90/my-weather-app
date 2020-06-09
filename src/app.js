@@ -1,11 +1,22 @@
 // core modules
-const path = require('path')
+const path = require('path');
+
 // npm modules
 const express = require('express');
 const hbs = require('hbs');
+
+// disable debug logging in prod
+if (process.env.NODE_ENV === 'production') {
+    console.debug = (args) => {};
+}
+
+// load config
+require('./config');
+
 // local modules
-const geocode = require('./service/geo');
-const weather = require('./service/weather');
+const geoService = require('./service/geo');
+const weatherService = require('./service/weather');
+
 
 // Create the app
 const app = express();
@@ -24,28 +35,28 @@ hbs.registerPartials(partialsPath);
 
 // App routes
 const routes = [
-	{
-		route: '/',
-		method: 'GET',
-		params: '',
-	},
-	{
-		route: '/about',
-		method: 'GET',
-		params: ''
-	},
-	{
-		route: '/weather',
-		method: 'GET',
-		params: 'location=<location>'
-	}
+    {
+        route: '/',
+        method: 'GET',
+        params: '',
+    },
+    {
+        route: '/about',
+        method: 'GET',
+        params: ''
+    },
+    {
+        route: '/weather',
+        method: 'GET',
+        params: 'location=<location>'
+    }
 ];
 
 // Setup the root route
 app.get('', (req, res) => {
     res.render('index', {
-		title: 'Weather',
-		routes: routes
+        title: 'Weather',
+        routes: routes
     });
 });
 
@@ -57,32 +68,47 @@ app.get('/about', (req, res) => {
 });
 
 // Setup /weather route
-app.get('/weather', (req, res) => {
+app.get('/weather', async (req, res) => {
     if (!req.query.location) {
         res.send({
-	    error: 'Required query param: [location] missing.'
-	});
+            error: 'Required query param: [location] missing.'
+        });
         return;
     }
 
-    geocode(req.query.location, (error, { latitude, longitude }) => {
-	if (error) {
-	    res.send({error});
-	} else {
-	    weather(latitude, longitude, (error, data) => {
-	        if (error) {
-		    res.send({error});
-		} else {
-		    res.send({
-	                data: {
-	                    location: req.query.location,
-		            weather: data
-	                }
-	            });
-		}
-	    });
-	}
-    });
+    try {
+        const geoResponse = await geoService.get(req.query.location);
+
+        if (geoResponse.error) {
+            res.send({error});
+            return;
+        }
+
+        const bestMatch = geoResponse.data.locations[0];
+
+        const weatherResponse = await weatherService.get(bestMatch.latLng.lat, bestMatch.latLng.lng);
+
+        if (weatherResponse.error) {
+            res.send({error});
+            return;
+        }
+
+        res.send({
+            data: {
+                query: geoResponse.data.providedLocation.location,
+                country: bestMatch.adminArea1,
+                coordinates: {
+                    latitude: bestMatch.latLng.lat,
+                    longitude: bestMatch.latLng.lng
+                },
+                weather: weatherResponse.data.currently
+            }
+        });
+        return;
+    } catch (error) {
+        res.send({error});
+        return;
+    }
 });
 
 // Start the server

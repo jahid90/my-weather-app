@@ -1,19 +1,32 @@
-const request = require('request');
+const axios = require('axios');
 
-const weather = (latitude, longitude, callback) => {
-    const url = 'https://api.darksky.net/forecast/' + process.env.DARKSKY_API_KEY + '/' + latitude + ',' + longitude + '?units=si';
+const baseUrl = process.env.DARKSKY_BASE_URL;
+const key = process.env.DARKSKY_API_KEY
 
-    request({ url: url, json: true }, (error, response, body) => {
-        if (error) {
-	    callback(error);
-	} else if (body.error) {
-	    callback(body.error);
-	} else {
-	    callback(undefined, 'It\'s ' + body.currently.summary + ' with a ' + body.currently.precipProbability + '% chance of rain.' +
-	            ' The current temperature is ' + body.currently.temperature + ' degress, with a high of ' + body.daily.data[0].temperatureHigh + 
-	    	    ' and a low of ' + body.daily.data[0].temperatureLow + ' for the day');
+async function getWeather(latitude, longitude) {
+
+	console.debug('Making weather request to:', baseUrl);
+
+	try {
+		const apiResponse = await axios.get(`${baseUrl}/${key}/${latitude},${longitude}`, {
+			params: {
+				units: 'si'
+			}
+		});
+
+		console.debug('Received response from API:');
+		console.debug(apiResponse);
+
+		return {
+			data: apiResponse.data
+		}
+	} catch (error) {
+		return {
+			error
+		};
 	}
-    })
-};
+}
 
-module.exports = weather;
+module.exports = {
+	get: getWeather
+};
