@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+    web:
+        build: ./client/
+        image: weather.web:local
+        container_name: weather-web
+        environment:
+            - VIRTUAL_HOST=weather.jahiduls.io
+        ports:
+            - 8080:80
+    service:
+        build: ./server/
+        image: weather.service:local
+        container_name: weather-service
+        env_file:
+            - ./server/.env
+        environment:
+            - VIRTUAL_HOST=weather-service.jahiduls.io
+        ports:
+            - 8081:3000
+
