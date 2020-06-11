@@ -1,4 +1,0 @@
-build:
-    docker:
-        web: ./client/Dockerfile
-        service: ./server/Dockerfile
