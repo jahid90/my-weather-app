@@ -1,7 +1,12 @@
 version: '3'
 
+networks:
+    default:
+        external:
+            name: home_network
+
 services:
-    web:
+    weather-web:
         build: ./client/
         image: weather.web:local
         container_name: weather-web
@@ -9,7 +14,7 @@ services:
             - VIRTUAL_HOST=weather.jahiduls.io
         ports:
             - 8080:80
-    service:
+    weather-service:
         build: ./server/
         image: weather.service:local
         container_name: weather-service
@@ -17,6 +22,7 @@ services:
             - ./server/.env
         environment:
             - VIRTUAL_HOST=weather-service.jahiduls.io
+            - NODE_ENV=production
         ports:
-            - 8081:3000
+            - 3000:3000
 
