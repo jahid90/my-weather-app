@@ -4,6 +4,7 @@ const path = require('path');
 // npm modules
 const express = require('express');
 const hbs = require('hbs');
+const cors = require('cors');
 
 // disable debug logging in prod
 if (process.env.NODE_ENV === 'production') {
@@ -28,6 +29,7 @@ const viewsPath = path.join(__dirname, '../templates/views');
 const partialsPath = path.join(__dirname, '../templates/partials');
 
 // Configure the app
+app.use(cors());
 app.use(express.static(staticResourcesPath));
 app.set('view engine', 'hbs');
 app.set('views', viewsPath);
