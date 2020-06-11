@@ -18,7 +18,6 @@ require('./config');
 const geoService = require('./service/geo');
 const weatherService = require('./service/weather');
 
-
 // Create the app
 const app = express();
 
