@@ -12,6 +12,7 @@ services:
         container_name: weather-web
         environment:
             - VIRTUAL_HOST=weather.jahiduls.io
+            - SERVICE_ENDPOINT=http://localhost:3000/weather
         ports:
             - 8080:80
     weather-service:
