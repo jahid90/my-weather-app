@@ -1,6 +1,7 @@
 {
   "extends": [
     "config:base"
+<<<<<<< HEAD
   ],
   "packageRules": [
     {
@@ -8,5 +9,7 @@
       "matchCurrentVersion": "!/^0/",
       "automerge": true
     }
+=======
+>>>>>>> 96fdb92... [service] Add renovate.json
   ]
 }
