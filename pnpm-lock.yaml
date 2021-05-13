@@ -6,7 +6,7 @@ specifiers:
   dotenv: ^9.0.0
   express: ^4.17.1
   hbs: ^4.0.4
-  nodemon: 2.0.6
+  nodemon: 2.0.7
 
 dependencies:
   axios: 0.21.1
@@ -16,7 +16,7 @@ dependencies:
   hbs: 4.1.1
 
 devDependencies:
-  nodemon: 2.0.6
+  nodemon: 2.0.7
 
 packages:
 
@@ -767,8 +767,8 @@ packages:
     resolution: {integrity: sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==}
     dev: false
 
-  /nodemon/2.0.6:
-    resolution: {integrity: sha512-4I3YDSKXg6ltYpcnZeHompqac4E6JeAMpGm8tJnB9Y3T0ehasLa4139dJOcCrB93HHrUMsCrKtoAlXTqT5n4AQ==}
+  /nodemon/2.0.7:
+    resolution: {integrity: sha512-XHzK69Awgnec9UzHr1kc8EomQh4sjTQ8oRf8TsGrSmHDx9/UmiGG9E/mM3BuTfNeFwdNBvrqQq/RHL0xIeyFOA==}
     engines: {node: '>=8.10.0'}
     hasBin: true
     requiresBuild: true
