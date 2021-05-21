@@ -3,7 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   axios: ^0.21.1
   cors: ^2.8.5
-  dotenv: ^9.0.0
+  dotenv: ^10.0.0
   express: ^4.17.1
   hbs: ^4.0.4
   nodemon: 2.0.7
@@ -11,7 +11,7 @@ specifiers:
 dependencies:
   axios: 0.21.1
   cors: 2.8.5
-  dotenv: 9.0.2
+  dotenv: 10.0.0
   express: 4.17.1
   hbs: 4.1.1
 
@@ -311,8 +311,8 @@ packages:
       is-obj: 2.0.0
     dev: true
 
-  /dotenv/9.0.2:
-    resolution: {integrity: sha512-I9OvvrHp4pIARv4+x9iuewrWycX6CcZtoAu1XrzPxc5UygMJXJZYmBsynku8IkrJwgypE5DGNjDPmPRhDCptUg==}
+  /dotenv/10.0.0:
+    resolution: {integrity: sha512-rlBi9d8jpv9Sf1klPjNfFAuWDjKLwTIJJ/VxtoTwIR6hnZxcEOQCZg2oIL3MWBYw5GpUDKOEnND7LXTbIpQ03Q==}
     engines: {node: '>=10'}
     dev: false
 
