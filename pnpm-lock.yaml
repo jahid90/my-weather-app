@@ -3,7 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   axios: ^0.26.0
   cors: ^2.8.5
-  dotenv: ^10.0.0
+  dotenv: ^16.0.0
   express: ^4.17.1
   hbs: ^4.0.4
   nodemon: 2.0.13
@@ -11,7 +11,7 @@ specifiers:
 dependencies:
   axios: 0.26.0
   cors: 2.8.5
-  dotenv: 10.0.0
+  dotenv: 16.0.0
   express: 4.17.1
   hbs: 4.1.1
 
@@ -311,9 +311,9 @@ packages:
       is-obj: 2.0.0
     dev: true
 
-  /dotenv/10.0.0:
-    resolution: {integrity: sha512-rlBi9d8jpv9Sf1klPjNfFAuWDjKLwTIJJ/VxtoTwIR6hnZxcEOQCZg2oIL3MWBYw5GpUDKOEnND7LXTbIpQ03Q==}
-    engines: {node: '>=10'}
+  /dotenv/16.0.0:
+    resolution: {integrity: sha512-qD9WU0MPM4SWLPJy/r2Be+2WgQj8plChsyrCNQzW/0WjvcJQiKQJ9mH3ZgB3fxbUUxgc/11ZJ0Fi5KiimWGz2Q==}
+    engines: {node: '>=12'}
     dev: false
 
   /duplexer3/0.1.4:
