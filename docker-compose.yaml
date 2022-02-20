@@ -1,0 +1,50 @@
+version: '3'
+
+networks:
+  traefik:
+    name: traefik
+    driver: bridge
+
+services:
+  weather:
+    build: ./client
+    image: registry.jahiduls.mint/weather-app:local
+    container_name: weather-app
+    restart: unless-stopped
+    networks:
+      - traefik
+    expose:
+      - 80
+    environment:
+      - PORT=80
+      - SERVICE_ENDPOINT=weather.jahiduls.mint/api
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik
+      - traefik.http.routers.weather-app.entrypoints=websecure
+      - traefik.http.routers.weather-app.rule=Host(`weather.jahiduls.mint`)
+      - traefik.http.routers.weather-app.tls=true
+      - traefik.http.routers.weather-app.service=weather-app
+      - traefik.http.services.weather-app.loadbalancer.server.port=80
+  weather-service:
+    build: ./service
+    image: registry.jahiduls.mint/weather-service:local
+    container_name: weather-service
+    restart: unless-stopped
+    networks:
+      - traefik
+    expose:
+      - 80
+    environment:
+      - NODE_ENV=production
+      - PORT=80
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik
+      - traefik.http.routers.weather-service.entrypoints=websecure
+      - traefik.http.routers.weather-service.rule=Host(`weather.jahiduls.mint`) && PathPrefix(`/api`)
+      - traefik.http.routers.weather-service.tls=true
+      - traefik.http.routers.weather-service.service=weather-service
+      - traefik.http.routers.weather-service.middlewares=weather-service-strip-prefix
+      - traefik.http.services.weather-service.loadbalancer.server.port=80
+      - traefik.http.middlewares.weather-service-strip-prefix.stripprefix.prefixes=/api

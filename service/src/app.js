@@ -22,10 +22,9 @@ const weatherService = require('./service/weather');
 const app = express();
 
 // Setup app configurations
-const port = process.env.PORT || 3000;
 const staticResourcesPath = path.join(__dirname, '../public');
-const viewsPath = path.join(__dirname, '../templates/views');
-const partialsPath = path.join(__dirname, '../templates/partials');
+const viewsPath = path.join(__dirname, './templates/views');
+const partialsPath = path.join(__dirname, './templates/partials');
 
 // Configure the app
 app.use(cors());
@@ -44,27 +43,27 @@ const routes = [
     {
         route: '/about',
         method: 'GET',
-        params: ''
+        params: '',
     },
     {
         route: '/weather',
         method: 'GET',
-        params: 'location=<location>'
-    }
+        params: 'location=<location>',
+    },
 ];
 
 // Setup the root route
 app.get('', (req, res) => {
     res.render('index', {
         title: 'Weather',
-        routes: routes
+        routes: routes,
     });
 });
 
 // Setup the /about route
 app.get('/about', (req, res) => {
     res.render('about', {
-        title: 'About'
+        title: 'About',
     });
 });
 
@@ -72,7 +71,7 @@ app.get('/about', (req, res) => {
 app.get('/weather', async (req, res) => {
     if (!req.query.location) {
         res.send({
-            error: 'Required query param: [location] missing.'
+            error: 'Required query param: [location] missing.',
         });
         return;
     }
@@ -81,7 +80,7 @@ app.get('/weather', async (req, res) => {
         const geoResponse = await geoService.get(req.query.location);
 
         if (geoResponse.error) {
-            res.send({error});
+            res.send({ error });
             return;
         }
 
@@ -90,7 +89,7 @@ app.get('/weather', async (req, res) => {
         const weatherResponse = await weatherService.get(bestMatch.latLng.lat, bestMatch.latLng.lng);
 
         if (weatherResponse.error) {
-            res.send({error});
+            res.send({ error });
             return;
         }
 
@@ -100,19 +99,22 @@ app.get('/weather', async (req, res) => {
                 country: bestMatch.adminArea1,
                 coordinates: {
                     latitude: bestMatch.latLng.lat,
-                    longitude: bestMatch.latLng.lng
+                    longitude: bestMatch.latLng.lng,
                 },
-                weather: weatherResponse.data.currently
-            }
+                weather: weatherResponse.data.currently,
+            },
         });
         return;
     } catch (error) {
-        res.send({error});
+        res.send({ error });
         return;
     }
 });
 
+// Set the port
+const port = process.env.PORT || 3000;
+
 // Start the server
 app.listen(port, () => {
-    console.log(`Server listening on port ${port}.`)
+    console.log(`Server listening on port ${port}.`);
 });
