@@ -1,4 +1,4 @@
-name: service-code-ql
+name: client-code-ql
 
 on:
   push:

@@ -1,4 +1,4 @@
-name: "CodeQL"
+name: service-code-ql
 
 on:
   push:
