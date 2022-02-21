@@ -41,6 +41,11 @@ const routes = [
         params: '',
     },
     {
+        route: '/ping',
+        method: 'GET',
+        params: '',
+    },
+    {
         route: '/about',
         method: 'GET',
         params: '',
@@ -53,11 +58,16 @@ const routes = [
 ];
 
 // Setup the root route
-app.get('', (req, res) => {
+app.get('/', (req, res) => {
     res.render('index', {
         title: 'Weather',
         routes: routes,
     });
+});
+
+// Setup the /ping route
+app.get('/ping', (req, res) => {
+    res.json('OK');
 });
 
 // Setup the /about route
@@ -111,10 +121,4 @@ app.get('/weather', async (req, res) => {
     }
 });
 
-// Set the port
-const port = process.env.PORT || 3000;
-
-// Start the server
-app.listen(port, () => {
-    console.log(`Server listening on port ${port}.`);
-});
+module.exports = app;

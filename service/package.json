@@ -4,8 +4,9 @@
     "main": "index.js",
     "license": "MIT",
     "scripts": {
-        "dev": "nodemon src/app.js -e js,hbr",
-        "start": "node src/app.js"
+        "test": "jest --testTimeout=10000",
+        "dev": "nodemon bin/start-server -e js,hbr",
+        "start": "node bin/start-server"
     },
     "dependencies": {
         "axios": "^0.26.0",
@@ -15,6 +16,18 @@
         "hbs": "^4.0.4"
     },
     "devDependencies": {
-        "nodemon": "2.0.13"
+        "jest": "^27.5.1",
+        "nodemon": "2.0.13",
+        "supertest": "^6.2.2"
+    },
+    "jest": {
+        "testEnvironment": "node",
+        "coveragePathIgnorePatterns": [
+            "/node_modules/"
+        ],
+        "moduleFileExtensions": [
+            "js",
+            "hbs"
+        ]
     }
 }
