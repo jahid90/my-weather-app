@@ -16,9 +16,9 @@
         "hbs": "^4.0.4"
     },
     "devDependencies": {
-        "jest": "^27.5.1",
+        "jest": "27.5.1",
         "nodemon": "2.0.13",
-        "supertest": "^6.2.2"
+        "supertest": "6.2.2"
     },
     "jest": {
         "testEnvironment": "node",
