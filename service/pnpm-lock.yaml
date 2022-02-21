@@ -7,7 +7,7 @@ specifiers:
   express: ^4.17.1
   hbs: ^4.0.4
   jest: 27.5.1
-  nodemon: 2.0.13
+  nodemon: 2.0.15
   supertest: 6.2.2
 
 dependencies:
@@ -19,7 +19,7 @@ dependencies:
 
 devDependencies:
   jest: 27.5.1
-  nodemon: 2.0.13
+  nodemon: 2.0.15
   supertest: 6.2.2
 
 packages:
@@ -2723,8 +2723,8 @@ packages:
     resolution: {integrity: sha512-XxYDdcQ6eKqp/YjI+tb2C5WM2LgjnZrfYg4vgQt49EK268b6gYCHsBLrK2qvJo4FmCtqmKezb0WZFK4fkrZNsg==}
     dev: true
 
-  /nodemon/2.0.13:
-    resolution: {integrity: sha512-UMXMpsZsv1UXUttCn6gv8eQPhn6DR4BW+txnL3IN5IHqrCwcrT/yWHfL35UsClGXknTH79r5xbu+6J1zNHuSyA==}
+  /nodemon/2.0.15:
+    resolution: {integrity: sha512-gdHMNx47Gw7b3kWxJV64NI+Q5nfl0y5DgDbiVtShiwa7Z0IZ07Ll4RLFo6AjrhzMtoEZn5PDE3/c2AbVsiCkpA==}
     engines: {node: '>=8.10.0'}
     hasBin: true
     requiresBuild: true
