@@ -12,14 +12,14 @@ specifiers:
   eslint: 8.17.0
   eslint-plugin-vue: 9.1.0
   vue: 3.2.37
-  vue-router: 4.0.15
+  vue-router: 4.0.16
 
 dependencies:
   axios: 0.27.2
   bootstrap: 5.1.3
   core-js: 3.22.8
   vue: 3.2.37
-  vue-router: 4.0.15_vue@3.2.37
+  vue-router: 4.0.16_vue@3.2.37
 
 devDependencies:
   '@babel/core': 7.18.2
@@ -6594,8 +6594,8 @@ packages:
       webpack: 5.69.1
     dev: true
 
-  /vue-router/4.0.15_vue@3.2.37:
-    resolution: {integrity: sha512-xa+pIN9ZqORdIW1MkN2+d9Ui2pCM1b/UMgwYUCZOiFYHAvz/slKKBDha8DLrh5aCG/RibtrpyhKjKOZ85tYyWg==}
+  /vue-router/4.0.16_vue@3.2.37:
+    resolution: {integrity: sha512-JcO7cb8QJLBWE+DfxGUL3xUDOae/8nhM1KVdnudadTAORbuxIC/xAydC5Zr/VLHUDQi1ppuTF5/rjBGzgzrJNA==}
     peerDependencies:
       vue: ^3.2.0
     dependencies:
