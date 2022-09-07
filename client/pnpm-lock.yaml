@@ -8,7 +8,7 @@ specifiers:
   '@vue/cli-service': 5.0.8
   axios: 0.27.2
   bootstrap: 5.2.1
-  core-js: 3.25.0
+  core-js: 3.25.1
   eslint: 8.23.0
   eslint-plugin-vue: 9.4.0
   vue: 3.2.38
@@ -17,7 +17,7 @@ specifiers:
 dependencies:
   axios: 0.27.2
   bootstrap: 5.2.1
-  core-js: 3.25.0
+  core-js: 3.25.1
   vue: 3.2.38
   vue-router: 4.1.5_vue@3.2.38
 
@@ -1597,7 +1597,7 @@ packages:
       '@vue/babel-plugin-jsx': 1.1.1_@babel+core@7.19.0
       '@vue/babel-preset-jsx': 1.2.4_@babel+core@7.19.0
       babel-plugin-dynamic-import-node: 2.3.3
-      core-js: 3.25.0
+      core-js: 3.25.1
       core-js-compat: 3.21.1
       semver: 7.3.7
       vue: 3.2.38
@@ -3055,8 +3055,8 @@ packages:
       semver: 7.0.0
     dev: true
 
-  /core-js/3.25.0:
-    resolution: {integrity: sha512-CVU1xvJEfJGhyCpBrzzzU1kjCfgsGUxhEvwUV2e/cOedYWHdmluamx+knDnmhqALddMG16fZvIqvs9aijsHHaA==}
+  /core-js/3.25.1:
+    resolution: {integrity: sha512-sr0FY4lnO1hkQ4gLDr24K0DGnweGO1QwSj5BpfQjpSJPdqWalja4cTps29Y/PJVG/P7FYlPDkH3hO+Tr0CvDgQ==}
     requiresBuild: true
 
   /core-util-is/1.0.3:
