@@ -10,7 +10,7 @@ specifiers:
   bootstrap: 5.2.3
   core-js: 3.26.1
   eslint: 8.28.0
-  eslint-plugin-vue: 9.7.0
+  eslint-plugin-vue: 9.8.0
   vue: 3.2.45
   vue-router: 4.1.6
 
@@ -28,7 +28,7 @@ devDependencies:
   '@vue/cli-plugin-eslint': 5.0.8_e0fc2c008fca79f8101b02d6a9db6a69
   '@vue/cli-service': 5.0.8_@babel+core@7.20.2
   eslint: 8.28.0
-  eslint-plugin-vue: 9.7.0_eslint@8.28.0
+  eslint-plugin-vue: 9.8.0_eslint@8.28.0
 
 packages:
 
@@ -3544,8 +3544,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /eslint-plugin-vue/9.7.0_eslint@8.28.0:
-    resolution: {integrity: sha512-DrOO3WZCZEwcLsnd3ohFwqCoipGRSTKTBTnLwdhqAbYZtzWl0o7D+D8ZhlmiZvABKTEl8AFsqH1GHGdybyoQmw==}
+  /eslint-plugin-vue/9.8.0_eslint@8.28.0:
+    resolution: {integrity: sha512-E/AXwcTzunyzM83C2QqDHxepMzvI2y6x+mmeYHbVDQlKFqmKYvRrhaVixEeeG27uI44p9oKDFiyCRw4XxgtfHA==}
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^6.2.0 || ^7.0.0 || ^8.0.0
